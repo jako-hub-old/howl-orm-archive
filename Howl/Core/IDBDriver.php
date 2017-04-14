@@ -1,8 +1,11 @@
 <?php
 /**
+ * Juventud en extasis
+ * La rubia del cabaret
  * This interface describes the behaviour of any Database driver.
  * @author Jorge Alejandro Quiroz Serna (Jako) <alejo.jko@gmail.com>
  * @license MIT License
+ * @version 1.0.1
  */
 
 namespace Howl\Core;
@@ -15,6 +18,13 @@ interface IDBDriver {
      * @return array
      */
     public function describe(string $tableName) : array;
+
+    /**
+     * This function allows to create field objects which contains info about the table field.
+     * @param array $fieldInfo
+     * @return DBField
+     */
+    public function createField(array $fieldInfo) : \Howl\Core\DBField;
 
     /**
      * This function must be implemented to add conditions to the query.
@@ -112,9 +122,10 @@ interface IDBDriver {
     /**
      * This function must be implemented to execute a select query and return
      * the results of the query.
+     * @param bool $all
      * @return array
      */
-    public function select() : array;
+    public function select(bool $all = true) : array;
 
     /**
      * This function must be implemented to execute an insert query and
@@ -148,4 +159,12 @@ interface IDBDriver {
      * @return string
      */
     public function insertedId() : string;
+
+    /**
+     * This must be implemented to execute a query and return it's results as an array.
+     * @param string $query
+     * @param bool $all
+     * @return array
+     */
+    public function query(string $query, bool $all = true) : array;
 }

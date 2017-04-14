@@ -3,6 +3,7 @@
  * This class is the base for any Database Connector
  * @author Jorge Alejandro Quiroz Serna (Jako) <alejo.jko@gmail.com>
  * @license MIT License
+ * @version 1.0.0
  */
 
 namespace Howl\Core;
@@ -49,7 +50,6 @@ abstract class DBConnector {
 
     /**
      * This function must be implemented to connect to database.
-     * @return mixed
      */
     public abstract function connect();
 
@@ -61,8 +61,14 @@ abstract class DBConnector {
     public abstract function exeQuery(string $query);
 
     /**
+     * This function must be implemented to return the results of an executed query.
+     * @param bool $all
+     * @return array
+     */
+    public abstract function fetch(bool $all = true) : array;
+
+    /**
      * This function must be implemented to close connection to database.
-     * @return mixed
      */
     public abstract function disconnect();
 

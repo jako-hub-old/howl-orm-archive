@@ -3,6 +3,7 @@
  * This class is the base for any Database Driver
  * @author Jorge Alejandro Quiroz Serna (Jako) <alejo.jko@gmail.com>
  * @license MIT License
+ * @version 1.0.0
  */
 
 namespace Howl\Core;
