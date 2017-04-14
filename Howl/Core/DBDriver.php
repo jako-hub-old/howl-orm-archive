@@ -8,7 +8,7 @@
 
 namespace Howl\Core;
 
-abstract class DBDriver {
+abstract class DBDriver implements IDBDriver {
     /**
      * Current query (A database driver must run one query at once).
      * @var string
@@ -84,7 +84,12 @@ abstract class DBDriver {
     protected $offset;
 
     public abstract function __construct(array $config);
-
+    /**
+     * This function allows to create field objects which contains info about the table field.
+     * @param array $fieldInfo
+     * @return DBField
+     */
+    public abstract  function createField(array $fieldInfo) : \Howl\Core\DBField;
     /**
      * This function must be implemented to execute any query.
      * @return bool
@@ -127,7 +132,7 @@ abstract class DBDriver {
      */
     public function buildColumns() : string{
         $columns = implode(', ', array_map(function($column){
-            return "{$this->tableAlias}.{$column}";
+            return "{$column}";
         }, $this->columnNames));
         return $columns;
     }

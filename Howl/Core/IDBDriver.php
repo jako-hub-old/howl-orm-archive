@@ -20,13 +20,6 @@ interface IDBDriver {
     public function describe(string $tableName) : array;
 
     /**
-     * This function allows to create field objects which contains info about the table field.
-     * @param array $fieldInfo
-     * @return DBField
-     */
-    public function createField(array $fieldInfo) : \Howl\Core\DBField;
-
-    /**
      * This function must be implemented to add conditions to the query.
      * @param string $field
      * @param string $compare

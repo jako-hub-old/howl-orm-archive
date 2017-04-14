@@ -11,10 +11,9 @@ namespace Howl\Drivers\MySql;
 
 use \PDOException;
 use Howl\Core\DBDriver;
-use Howl\Core\IDBDriver;
 use Howl\Core\DBField;
 
-class MySqlDriver extends DBDriver implements IDBDriver {
+class MySqlDriver extends DBDriver {
 
     public function __construct(array $config) {
         $this->connector = new MySqlConnector($config);
@@ -244,7 +243,7 @@ class MySqlDriver extends DBDriver implements IDBDriver {
      */
     public function insert(): bool {
         $this->query = "INSERT INTO {$this->table} ";
-        $this->query .= $this->buildColumns() . " VALUES (" . $this->buildValues() . ")";
+        $this->query .= "(" . $this->buildColumns(false) . ") VALUES (" . $this->buildValues() . ")";
         return $this->exeQuery();
     }
 
