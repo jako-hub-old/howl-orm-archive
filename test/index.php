@@ -11,13 +11,16 @@ $config = [
     'password' => 'jko123',
 ];
 
+require_once 'Items.php';
+
 echo "<pre>";
-$results = [];
 $db->loadDriver(\Howl\DBManager::MYSQL_DRIVER, $config);
-$db->table("items");
-$db->columns(["name", "description", "category_id"]);
-$db->values(["Nuevo item (Updated)","description...", "1"]);
-$db->condition("id", "7");
-$results = $db->delete();
+$results = \Test\Items::search()
+                        ->rightJoin("categories")
+                        ->onEquals("t1.id", "t.id")
+                        ->and()
+                        ->onEquals("t1.id", "t.id")
+                        ->equals("t1.name", "other")
+                        ->get();
 var_dump($results);
 

@@ -130,9 +130,9 @@ abstract class DBDriver implements IDBDriver {
      * Helps to build the column names for a SELECT | insert query.
      * @return string
      */
-    public function buildColumns() : string{
-        $columns = implode(', ', array_map(function($column){
-            return "{$column}";
+    public function buildColumns(bool $alias = false) : string{
+        $columns = implode(', ', array_map(function($column) use ($alias) {
+            return ($alias? "{$this->tableAlias}." : "") . "{$column}";
         }, $this->columnNames));
         return $columns;
     }

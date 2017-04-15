@@ -26,7 +26,7 @@ class MySqlDriver extends DBDriver {
      * @return array
      */
     public function describe(string $tableName): array {
-        $query = "DESCRIBE {$this->table}";
+        $query = "DESCRIBE {$tableName}";
         $results = $this->query($query);
         $fields = [];
         foreach($results AS $fieldInfo){
@@ -127,7 +127,7 @@ class MySqlDriver extends DBDriver {
      */
     public function betweenCond(string $field, string $from, string $to, $connector = "AND", bool $not = false) {
         $this->conditions .= $this->conditions == ""? " WHERE " : " {$connector} ";
-        $this->conditions .= "{$field}" . ($not? " NOT " : " ") . "BETWEEN '{$from}' AND {$to})";
+        $this->conditions .= "{$field}" . ($not? " NOT " : " ") . "BETWEEN '{$from}' AND {$to}";
     }
 
     /**
@@ -154,7 +154,7 @@ class MySqlDriver extends DBDriver {
      * @param string $group
      */
     public function group(string $group) {
-        if($this->group == "") $this->group = "GROUP BY {$group} ";
+        if($this->group == "") $this->group = " GROUP BY {$group} ";
         else $this->group .= ", {$group}";
         $this->isGrouped = true;
     }
@@ -220,8 +220,8 @@ class MySqlDriver extends DBDriver {
      * @return array
      */
     public function select(bool $all = true): array {
-        $cols = $this->buildColumns();
-        if($this->isGrouped) $cols .= ", COUNT({$this->tableAlias}.*) as counted";
+        $cols = $this->buildColumns(true);
+        if($this->isGrouped) $cols .= ", COUNT({$this->tableAlias}.id) as counted";
         $this->query = "SELECT {$cols} FROM $this->table AS $this->tableAlias";
         $this->query .= $this->joins;
         $this->query .= $this->conditions;
