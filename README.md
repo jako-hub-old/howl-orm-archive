@@ -1,7 +1,7 @@
 # Howl-ORM
 
 ## What is?
-Howl-ORM (Object Relational Model) was built to make the data layer of your applications easy and fast. Based on the active record pattern ** Howl-ORM ** makes easy:
+Howl-ORM (Object Relational Model) was built to make the data layer of your applications easy and fast. Based on the active record pattern **Howl-ORM** makes easy:
 * **Connect** to database
 * **List** and find records.
 * **Store** new records.
@@ -9,7 +9,7 @@ Howl-ORM (Object Relational Model) was built to make the data layer of your appl
 * **Delete** existing records.
 
 
->Also ** Howl-ORM ** allows you to filter records using clauses such as JOINS and GROUPS, the result can be ORDERED, LIMITED and COUNTED.
+>Also **Howl-ORM** allows you to filter records using clauses such as JOINS and GROUPS, the result can be ORDERED, LIMITED and COUNTED.
 
 
 ## How to install and initialize
@@ -70,7 +70,7 @@ $config = [
 
 ## Mapping your tables (Models)
 To map your database tables is very easy. 
-1. Create a file with name of the table into a directory named **models** (I recommend you to use PascalCase to name your models).
+1. Create a file with name of the table into a directory named **model** (I recommend you to use PascalCase to name your models).
 1. The file must contains a **namespace** Model.
 1. The file must have a class with the same name as the file.
 1. The class must extends from Howl\Model.
