@@ -1,0 +1,14 @@
+{
+    "name": "jakolab/howl-orm",
+    "description": "Library to mapping your database and manipulate data without SQL, just OOP.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "jakolab",
+            "email": "alejo.jko@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

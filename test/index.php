@@ -4,6 +4,7 @@ require_once '../Howl/HowlAutoload.php';
 \Howl\HowlAutoload::initAutoload();
 
 $db = \Howl\DBManager::getInstance();
+
 $config = [
     'host' => 'localhost',
     'user' => 'root',
@@ -22,5 +23,6 @@ $results = \Test\Items::search()
                         ->onEquals("t1.id", "t.id")
                         ->equals("t1.name", "other")
                         ->get();
+$item = \Test\Items::search()->byPk(1);
 var_dump($results);
 
